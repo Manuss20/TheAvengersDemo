@@ -1,0 +1,26 @@
+version: "3.9"
+
+networks:
+    theavengers.services.network:
+        driver: bridge
+
+services:
+    theavengers.services.api:
+        container_name: Avengers.API
+        build:
+          context: ../
+          dockerfile: ./build/avengers.api.dockerfile
+        ports:
+            - "8001:80"
+        networks:
+            - theavengers.services.network
+
+    theavengers.services.web:
+        container_name: Avengers.Web
+        build:
+          context: ../
+          dockerfile: ./build/avengers.web.dockerfile
+        ports:
+            - "8002:80"
+        networks:
+            - theavengers.services.network
