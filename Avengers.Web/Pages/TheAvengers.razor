@@ -1,0 +1,42 @@
+@page "/theavengers"
+@inject HttpClient Http
+@using Avengers.Models
+
+<h3>List of Avengers</h3>
+
+@if (Avengers == null)
+{
+    <p><em>Loading ...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Place</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var avgs in Avengers)
+            {
+                <tr>
+                    <td>@avgs.Name</td>
+                    <td>@avgs.FirstName</td>
+                    <td>@avgs.LastName</td>
+                    <td>@avgs.Place</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Avenger> Avengers;
+    protected override async Task OnInitializedAsync()
+    {
+        Avengers = await Http.GetFromJsonAsync<List<Avenger>>("/api/avenger");
+    }
+}
