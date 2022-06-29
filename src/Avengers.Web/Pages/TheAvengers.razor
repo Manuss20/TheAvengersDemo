@@ -13,6 +13,7 @@ else
     <table class="table">
         <thead>
             <tr>
+                <th>Photo</th>
                 <th>Name</th>
                 <th>FirstName</th>
                 <th>LastName</th>
@@ -23,6 +24,7 @@ else
             @foreach (var avgs in Avengers)
             {
                 <tr>
+                    <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Symbol_from_Marvel%27s_The_Avengers_logo.svg/1754px-Symbol_from_Marvel%27s_The_Avengers_logo.svg.png" width="50px"></td>
                     <td>@avgs.Name</td>
                     <td>@avgs.FirstName</td>
                     <td>@avgs.LastName</td>
